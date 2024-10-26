@@ -1,0 +1,117 @@
+/* General Styling */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8c1d1;
+}
+
+.container, .celebration {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #ff69b4;
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+/* Button Styling */
+.buttons button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#yesBtn {
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+#yesBtn:hover {
+  transform: scale(1.1);
+}
+
+#noBtn {
+  background-color: #ffcccc;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+}
+
+/* Surprise Page Styles */
+.message {
+  font-size: 1.2em;
+  color: #6a097d;
+  margin-top: 20px;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.balloons {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+/* Balloon Animation */
+.balloon {
+  width: 50px;
+  height: 70px;
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  bottom: -100px;
+  animation: float 6s ease-in infinite;
+}
+
+.balloon:nth-child(1) { animation-duration: 5s; }
+.balloon:nth-child(2) { animation-duration: 6s; }
+.balloon:nth-child(3) { animation-duration: 7s; }
+.balloon:nth-child(4) { animation-duration: 8s; }
+.balloon:nth-child(5) { animation-duration: 9s; }
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-600px); opacity: 0; }
+}
+
+/* Confetti Animation */
+.confetti {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.confetti-piece {
+  width: 10px;
+  height: 10px;
+  background-color: #ff69b4;
+  position: absolute;
+  top: -10px;
+  animation: fall 5s ease-in-out infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(600px); }
+}

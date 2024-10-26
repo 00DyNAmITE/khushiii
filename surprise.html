@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #result {
+            color: rgb(146, 247, 15);
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        /* Balloon Styles */
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 50px;
+            height: 70px;
+            background-color: red;
+            border-radius: 50% 50% 50% 50%;
+            box-shadow: inset -15px -15px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+            animation: fly 5s ease-in-out infinite;
+            z-index: 100;
+        }
+        
+        @keyframes fly {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Party Lights Styles */
+        .party-lights {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: none;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .party-light {
+            width: 40px;
+            height: 40px;
+            background-color: yellow;
+            border-radius: 50%;
+            box-shadow: 0px 0px 25px rgba(255, 255, 0, 0.8);
+            transition: background-color 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Amazing 🎉</h1>
+        <p>Dear Khushi,</p>
+        <p>On your special day, I wish for you endless happiness, success, and all the joy your heart can hold. May you always stay as cheerful and kind-hearted as you are today. I hope you achieve everything you dream of and soar to new heights with each passing day. Here's to staying strong, achieving your goals, and being number one in all that you do. <br> Remember, you are unstoppable, and your future is bright. Happy Birthday, Khushi! 🎂✨</p>
+
+        <div id="result">Thank you for being you! ❤️</div>
+    </div>
+
+    <div class="party-lights" id="party-lights">
+        <div class="party-light"></div>
+        <div class="party-light"></div>
+        <div class="party-light"></div>
+        <div class="party-light"></div>
+        <div class="party-light"></div>
+    </div>
+
+    <script>
+        // Triggering the Balloons and Party Lights on page load
+        window.addEventListener("load", () => {
+            showBalloons();
+            showPartyLights();
+        });
+
+        function showBalloons() {
+            for (let i = 0; i < 30; i++) {
+                const balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+                balloon.style.left = Math.random() * 100 + 'vw';
+                balloon.style.backgroundColor = getRandomColor();
+                balloon.style.transition = `transform ${Math.random() * 2 + 3}s ease-in-out`;
+                document.body.appendChild(balloon);
+
+                setTimeout(() => {
+                    balloon.style.transform = `translateY(-100vh) rotate(${Math.random() * 360}deg)`;
+                }, 100);
+
+                setTimeout(() => {
+                    balloon.remove();
+                }, 5000);
+            }
+        }
+
+        function getRandomColor() {
+            const colors = ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#FF33A8', '#33FFA8'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function showPartyLights() {
+            const lights = document.getElementById('party-lights');
+            lights.style.display = 'flex';
+
+            setInterval(() => {
+                document.querySelectorAll('.party-light').forEach(light => {
+                    const color = getRandomColor();
+                    light.style.backgroundColor = color;
+                    light.style.boxShadow = `0px 0px 30px ${color}`;
+                });
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
